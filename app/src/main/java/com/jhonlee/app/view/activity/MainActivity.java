@@ -20,6 +20,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.jhonlee.app.R;
+import com.jhonlee.app.view.fragment.AndroidFragment;
 import com.jhonlee.app.view.fragment.IndexFragment;
 import com.jhonlee.app.view.fragment.PictureFragment;
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity
 
     private IndexFragment iFragment;
     private PictureFragment pFragment;
+    private AndroidFragment aFragment;
 
     private Fragment isFragment;                         //记录当前正在使用的fragment
 
@@ -131,6 +133,10 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_manage:
                 toolbar.setTitle("Android");
+                if (aFragment == null){
+                    aFragment = new AndroidFragment();
+                }
+                switchContent(isFragment, aFragment);
                 break;
             case R.id.nav_share:
                 toolbar.setTitle("拓展资源");
