@@ -21,10 +21,10 @@ public class Contract {
     }
 
     public interface Presenter {
-        void showPicture(String name,int num, int page);
+        void showPicture(String name,int num);
     }
 
     public interface Model {
-        Observable<Token> showPicture(String name,int num, int page);
+        Observable<Token> showPicture(String name,int num);
     }
 }

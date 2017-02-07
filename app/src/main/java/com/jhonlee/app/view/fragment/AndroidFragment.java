@@ -51,7 +51,7 @@ public class AndroidFragment extends Fragment implements Contract.View,ResultLis
         View view = inflater.inflate(R.layout.fragment_index,container,false);
         ButterKnife.bind(this,view);
         presenter = new PresenterImpl(this);
-        presenter.showPicture("Android",100,1);
+        presenter.showPicture("Android",30);
         initRecyclerView();
         return view;
     }
@@ -70,7 +70,7 @@ public class AndroidFragment extends Fragment implements Contract.View,ResultLis
             @Override
             public void onRefresh() {
                 // TODO Auto-generated method stub
-                presenter.showPicture("Android",100,1);
+                presenter.showPicture("Android",30);
                 refresh.setRefreshing(false);
             }
         });

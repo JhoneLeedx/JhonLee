@@ -3,6 +3,7 @@ package com.jhonlee.app.view.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 
@@ -14,15 +15,26 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jhonlee.app.R;
+import com.jhonlee.app.util.DimenUtils;
 import com.jhonlee.app.view.fragment.AndroidFragment;
+import com.jhonlee.app.view.fragment.ExpandFragment;
+import com.jhonlee.app.view.fragment.HTMLFragment;
 import com.jhonlee.app.view.fragment.IndexFragment;
+import com.jhonlee.app.view.fragment.IosFragment;
 import com.jhonlee.app.view.fragment.PictureFragment;
+import com.jhonlee.app.view.fragment.VideoFragment;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.iconics.typeface.IIcon;
+import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,8 +58,12 @@ public class MainActivity extends AppCompatActivity
     private IndexFragment iFragment;
     private PictureFragment pFragment;
     private AndroidFragment aFragment;
-
+    private VideoFragment vFragment;
+    private IosFragment iosFragment;
+    private HTMLFragment hFragment;
+    private ExpandFragment eFragment;
     private Fragment isFragment;                         //记录当前正在使用的fragment
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +78,7 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        initNavigationView();
         initFragment(savedInstanceState);
     }
 
@@ -130,6 +147,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_slideshow:
                 toolbar.setTitle("休息视频");
+                if (vFragment==null)
+                    vFragment = new VideoFragment();
+                switchContent(isFragment, vFragment);
                 break;
             case R.id.nav_manage:
                 toolbar.setTitle("Android");
@@ -138,15 +158,46 @@ public class MainActivity extends AppCompatActivity
                 }
                 switchContent(isFragment, aFragment);
                 break;
+            case R.id.nav_ios:
+                toolbar.setTitle("IOS");
+                if (iosFragment == null){
+                    iosFragment = new IosFragment();
+                }
+                switchContent(isFragment, iosFragment);
+                break;
             case R.id.nav_share:
                 toolbar.setTitle("拓展资源");
+                if (eFragment==null)
+                    eFragment = new ExpandFragment();
+                switchContent(isFragment, eFragment);
                 break;
             case R.id.nav_send:
                 toolbar.setTitle("前端");
+
+                if (hFragment == null){
+                    hFragment = new HTMLFragment();
+                }
+                switchContent(isFragment, hFragment);
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void initNavigationView(){
+
+       Menu menu =  navigationView.getMenu();
+        Log.d("menu++++++++++++",menu.size()+"");
+        MenuItem item0 = menu.getItem(0);
+        MenuItem item1 = menu.getItem(1);
+        MenuItem item2 = menu.getItem(2);
+        MenuItem item3 = menu.getItem(3);
+        MenuItem item4 = menu.getItem(4);
+        item0.setIcon(new IconicsDrawable(this).icon(MaterialDesignIconic.Icon.gmi_view_comfy));
+        item1.setIcon(new IconicsDrawable(this).icon(MaterialDesignIconic.Icon.gmi_mood));
+        item2.setIcon(new IconicsDrawable(this).icon(MaterialDesignIconic.Icon.gmi_collection_video));
+        item3.setIcon(new IconicsDrawable(this).icon(MaterialDesignIconic.Icon.gmi_android));
+        item4.setIcon(new IconicsDrawable(this).icon(MaterialDesignIconic.Icon.gmi_apple));
     }
 
     /**

@@ -1,13 +1,12 @@
 package com.jhonlee.app.view.fragment;
 
-
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,9 @@ import com.jhonlee.app.R;
 import com.jhonlee.app.bean.ResultBean;
 import com.jhonlee.app.contract.Contract;
 import com.jhonlee.app.presenter.PresenterImpl;
-import com.jhonlee.app.view.activity.ShowImageActivity;
-import com.jhonlee.app.view.adapter.PictureAdapter;
+import com.jhonlee.app.util.RecyclerViewDivider;
+import com.jhonlee.app.view.activity.DetailActivity;
+import com.jhonlee.app.view.adapter.AndroidAdapter;
 import com.jhonlee.app.view.listener.ResultListener;
 
 import java.util.ArrayList;
@@ -29,10 +29,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
-* Created by JhoneLee on 2017/02/06
-*/
+ * Created by JhoneLee on 2017/2/6.
+ */
 
-public class PictureFragment extends Fragment implements Contract.View,ResultListener {
+public class IosFragment extends Fragment implements Contract.View,ResultListener{
 
     @BindView(R.id.refresh)
     protected SwipeRefreshLayout refresh;
@@ -42,35 +42,35 @@ public class PictureFragment extends Fragment implements Contract.View,ResultLis
     protected RelativeLayout mRlLoading;
 
     private Contract.Presenter presenter;
-    private PictureAdapter adapter;
+    private AndroidAdapter anAdapter;
     private List<ResultBean> mList;
 
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_picture,container,false);
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_index,container,false);
         ButterKnife.bind(this,view);
         presenter = new PresenterImpl(this);
-        presenter.showPicture("福利",30);
+        presenter.showPicture("iOS",30);
         initRecyclerView();
         return view;
     }
     public void initRecyclerView(){
         mList = new ArrayList<>();
-        StaggeredGridLayoutManager manager=null;
-        manager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        LinearLayoutManager manager=null;
+        manager = new LinearLayoutManager(getContext());
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecycler.setLayoutManager(manager);
-        mRecycler.setFocusable(false);
-        adapter = new PictureAdapter(mList,getContext(),this);
-        mRecycler.setAdapter(adapter);
-        SpacesItemDecoration decoration=new SpacesItemDecoration(16);
-        mRecycler.addItemDecoration(decoration);
+        mRecycler.addItemDecoration(new RecyclerViewDivider(getActivity(),RecyclerViewDivider.VERTICAL_LIST));
+        anAdapter = new AndroidAdapter(mList,getContext(),this);
+        mRecycler.setAdapter(anAdapter);
         refresh.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             @Override
             public void onRefresh() {
                 // TODO Auto-generated method stub
-                presenter.showPicture("福利",30);
+                presenter.showPicture("iOS",30);
                 refresh.setRefreshing(false);
             }
         });
@@ -98,33 +98,15 @@ public class PictureFragment extends Fragment implements Contract.View,ResultLis
             mList.clear();
             mList.addAll(list);
         }
-        adapter.notifyDataSetChanged();
+        anAdapter.notifyDataSetChanged();
     }
+
 
     @Override
     public void showActivity(ResultBean bean) {
         Intent intent = new Intent();
         intent.putExtra("url",bean.getUrl());
-        intent.setClass(getContext(), ShowImageActivity.class);
+        intent.setClass(getActivity(), DetailActivity.class);
         startActivity(intent);
-    }
-
-    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
-
-        private int space;
-
-        public SpacesItemDecoration(int space) {
-            this.space=space;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            outRect.left=space;
-            outRect.right=space;
-            outRect.bottom=space;
-            if(parent.getChildAdapterPosition(view)==0){
-                outRect.top=space;
-            }
-        }
     }
 }

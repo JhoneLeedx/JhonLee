@@ -1,19 +1,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="140dp"
     android:orientation="horizontal">
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/tv_android_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:padding="10dp"
+            android:textSize="18sp"
             android:text="TabLayout 和 CoordinatorLayout 相结合的折叠控件"/>
+
         <TextView
             android:id="@+id/tv_android_author"
             android:layout_width="match_parent"
@@ -22,10 +26,13 @@
             android:gravity="end"
             android:text="邵辉Vista"/>
     </LinearLayout>
+
     <ImageView
+        android:layout_gravity="center_vertical"
         android:padding="2dp"
         android:id="@+id/img_android"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
         android:src="@drawable/y"/>
 </LinearLayout>

@@ -26,9 +26,9 @@ public class PresenterImpl implements Contract.Presenter {
     }
 
     @Override
-    public void showPicture(String name,int num, int page) {
+    public void showPicture(String name,int num) {
         view.showProgress();
-        Observable<Token> observable = model.showPicture(name,num,page);
+        Observable<Token> observable = model.showPicture(name,num);
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Token>() {

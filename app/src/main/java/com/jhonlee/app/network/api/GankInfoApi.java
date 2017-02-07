@@ -12,6 +12,6 @@ import rx.Observable;
 
 public interface GankInfoApi {
 
-    @GET("{name}/{num}/{page}")
-    Observable<Token> showFulipicture(@Path("name")String name,@Path("num")int num, @Path("page")int page);
+    @GET("{name}/{num}")
+    Observable<Token> showFulipicture(@Path("name")String name,@Path("num")int num);
 }

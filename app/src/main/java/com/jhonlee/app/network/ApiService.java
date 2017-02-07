@@ -47,7 +47,7 @@ public class ApiService {
     private static ApiService apiService;
     private Retrofit retrofit;
 
-    public static final String URL_HOST ="http://gank.io/api/data/";
+    public static final String URL_HOST ="http://gank.io/api/random/data/";
 
     private ApiService(){
         //初始化retrofit
@@ -62,8 +62,8 @@ public class ApiService {
     }
 
     private GankInfoApi pApi ;
-    public Observable<Token> getFulipicture(String name,int num, int page){
-        Observable<Token> observable = pApi.showFulipicture(name,num,page);
+    public Observable<Token> getFulipicture(String name,int num){
+        Observable<Token> observable = pApi.showFulipicture(name,num);
         return observable;
     }
 

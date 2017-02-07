@@ -52,7 +52,7 @@ public class IndexFragment extends Fragment implements Contract.View,ResultListe
         View view = inflater.inflate(R.layout.fragment_index,container,false);
         ButterKnife.bind(this,view);
         presenter = new PresenterImpl(this);
-        presenter.showPicture("all",100,1);
+        presenter.showPicture("all",30);
         initRecyclerView();
         return view;
     }
@@ -71,7 +71,7 @@ public class IndexFragment extends Fragment implements Contract.View,ResultListe
             @Override
             public void onRefresh() {
                 // TODO Auto-generated method stub
-                presenter.showPicture("all",100,1);
+                presenter.showPicture("all",30);
                 refresh.setRefreshing(false);
             }
         });

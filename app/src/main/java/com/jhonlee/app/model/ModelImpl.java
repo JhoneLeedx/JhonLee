@@ -14,7 +14,7 @@ import rx.Observable;
 public class ModelImpl implements Contract.Model{
 
     @Override
-    public Observable<Token> showPicture(String name,int num, int page) {
-        return ApiService.getApiservice().getFulipicture(name,num,page);
+    public Observable<Token> showPicture(String name,int num) {
+        return ApiService.getApiservice().getFulipicture(name,num);
     }
 }
