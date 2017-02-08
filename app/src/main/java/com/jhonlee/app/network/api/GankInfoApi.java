@@ -1,5 +1,6 @@
 package com.jhonlee.app.network.api;
 
+import com.jhonlee.app.bean.DayLife;
 import com.jhonlee.app.bean.Token;
 
 import retrofit2.http.GET;
@@ -14,4 +15,5 @@ public interface GankInfoApi {
 
     @GET("{name}/{num}")
     Observable<Token> showFulipicture(@Path("name")String name,@Path("num")int num);
+
 }

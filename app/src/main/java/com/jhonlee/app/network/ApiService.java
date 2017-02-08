@@ -1,7 +1,11 @@
 package com.jhonlee.app.network;
 
 
+import android.util.Log;
+
+import com.jhonlee.app.bean.DayLife;
 import com.jhonlee.app.bean.Token;
+import com.jhonlee.app.network.api.DayApi;
 import com.jhonlee.app.network.api.GankInfoApi;
 
 import java.io.IOException;
@@ -10,6 +14,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -46,9 +51,10 @@ public class ApiService {
 
     private static ApiService apiService;
     private Retrofit retrofit;
+    private Retrofit dayRetrofit;
 
     public static final String URL_HOST ="http://gank.io/api/random/data/";
-
+    public static final String URL ="http://gank.io/api/day/";
     private ApiService(){
         //初始化retrofit
         retrofit = new Retrofit.Builder()
@@ -57,13 +63,26 @@ public class ApiService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
+        dayRetrofit =  new Retrofit.Builder()
+                .baseUrl(URL)
+                .client(genericClient())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+
         //创建实例
         pApi = retrofit.create(GankInfoApi.class);
+        dApi = dayRetrofit.create(DayApi.class);
     }
 
     private GankInfoApi pApi ;
     public Observable<Token> getFulipicture(String name,int num){
         Observable<Token> observable = pApi.showFulipicture(name,num);
+        return observable;
+    }
+    private DayApi dApi;
+    public  Observable<DayLife> ShowMessage(String time){
+        Observable<DayLife> observable = dApi.ShowMessage(time);
         return observable;
     }
 
@@ -74,20 +93,35 @@ public class ApiService {
         }
         return apiService;
     }
-    //快速添加header。。
+    //快速添加header。。和打印请求地址
     private  static OkHttpClient genericClient() {
-        OkHttpClient httpClient = new OkHttpClient.Builder()
-                .addInterceptor(new Interceptor() {
-                    @Override
-                    public Response intercept(Chain chain) throws IOException {
-                        Request request = chain.request()
-                                .newBuilder()
-                                .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-                                .build();
-                        return chain.proceed(request);
-                    }
-                }).build();
-        return httpClient;
+
+        HttpLoggingInterceptor.Level level= HttpLoggingInterceptor.Level.BODY;
+        //新建log拦截器
+        HttpLoggingInterceptor loggingInterceptor=new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                Log.d("Jhon Lee","OkHttp====Message:"+message);
+            }
+        });
+        loggingInterceptor.setLevel(level);
+        //定制OkHttp
+        OkHttpClient.Builder httpClientBuilder = new OkHttpClient
+                .Builder();
+        //OkHttp进行添加拦截器loggingInterceptor
+        httpClientBuilder.addInterceptor(loggingInterceptor);
+        httpClientBuilder.addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request()
+                        .newBuilder()
+                        .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+                        .build();
+                return chain.proceed(request);
+            }
+        });
+
+        return httpClientBuilder.build();
     }
 
 

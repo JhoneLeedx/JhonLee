@@ -1,22 +1,44 @@
 package com.jhonlee.app.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by JhoneLee on 2017/2/7.
  */
 
-public class DayLife {
+public class DayLife implements Parcelable{
+
 
     /**
-     * category : ["iOS","拓展资源","Android","休息视频","福利"]
+     * category : ["iOS","拓展资源","Android","福利","瞎推荐","前端","休息视频"]
      * error : false
-     * results : {"Android":[{"_id":"56cc6d23421aa95caa707bba","createdAt":"2015-08-06T02:05:32.826Z","desc":"一个查看设备规格的库，并且可以计算哪一年被定为\u201c高端\u201d机","publishedAt":"2015-08-06T04:16:55.575Z","type":"Android","url":"https://github.com/facebook/device-year-class","used":true,"who":"有时放纵"},{"_id":"56cc6d23421aa95caa707c67","createdAt":"2015-08-05T16:36:19.591Z","desc":"一个好玩的自定义字体库","publishedAt":"2015-08-06T04:16:55.805Z","type":"Android","url":"https://github.com/vsvankhede/easyfonts","used":true,"who":"有时放纵"},{"_id":"56cc6d23421aa95caa707c6a","createdAt":"2015-08-06T02:07:23.290Z","desc":"一个小清新spinner","publishedAt":"2015-08-06T04:16:55.582Z","type":"Android","url":"https://github.com/arcadefire/nice-spinner","used":true,"who":"有时放纵"}],"iOS":[{"_id":"56cc6d1d421aa95caa70777e","createdAt":"2015-08-06T01:55:36.30Z","desc":"iOS 核心动画高级技巧","publishedAt":"2015-08-06T04:16:55.592Z","type":"iOS","url":"http://zsisme.gitbooks.io/ios-/content/","used":true,"who":"Andrew Liu"},{"_id":"56cc6d23421aa95caa707a65","createdAt":"2015-08-05T03:45:12.537Z","desc":"设定label，text等视图的属性，你喜欢这种方式么？","publishedAt":"2015-08-06T04:16:55.584Z","type":"iOS","url":"http://natashatherobot.com/ios-a-beautiful-way-of-styling-iboutlets-in-swift/?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=web&utm_source=This_Week_in_Swift_47","used":true,"who":"Huan"},{"_id":"56cc6d23421aa95caa707c62","createdAt":"2015-08-06T01:56:32.207Z","desc":"iOS开发之block终极篇","publishedAt":"2015-08-06T04:16:55.589Z","type":"iOS","url":"http://www.90159.com/2015/08/05/ios-block-ultimate/","used":true,"who":"Andrew Liu"},{"_id":"56cc6d23421aa95caa707c70","createdAt":"2015-08-05T12:17:08.481Z","desc":"Status Board 2 - Panic 公司推出的 iOS App，可以生成可视化数据图表，用以监测项目效率、Bug量，团队动态、销售情况等多种数据（稀土圈）","publishedAt":"2015-08-06T04:16:55.601Z","type":"iOS","url":"https://www.panic.com/statusboard/","used":true,"who":"LHF"}],"休息视频":[{"_id":"56cc6d23421aa95caa707c2b","createdAt":"2015-08-06T03:55:07.175Z","desc":"重温字幕版倒鸭子~~~","publishedAt":"2015-08-06T04:16:55.578Z","type":"休息视频","url":"http://video.weibo.com/show?fid=1034:0c79a69b1bafe17df62e750391d92118","used":true,"who":"代码家"}],"拓展资源":[{"_id":"56cc6d1d421aa95caa707781","createdAt":"2015-08-06T00:53:43.851Z","desc":"node express 源码接卸","publishedAt":"2015-08-06T04:16:55.601Z","type":"拓展资源","url":"https://gist.github.com/dlutwuwei/3faf88d535ac81c4e263","used":true,"who":"YJX"},{"_id":"56cc6d23421aa95caa707a66","createdAt":"2015-08-06T00:49:19.237Z","desc":"MongoDB从入门到精通系列","publishedAt":"2015-08-06T04:16:55.579Z","type":"拓展资源","url":"http://codefrom.com/t/mongodb%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A%E7%B3%BB%E5%88%97%E4%B8%93%E9%A2%98","used":true,"who":"YJX"}],"福利":[{"_id":"56cc6d23421aa95caa707c6f","createdAt":"2015-08-06T01:33:55.463Z","desc":"8.6","publishedAt":"2015-08-06T04:16:55.601Z","type":"福利","url":"http://ww4.sinaimg.cn/large/7a8aed7bgw1eusn3niy2bj20hs0qo0wb.jpg","used":true,"who":"张涵宇"}]}
+     * results : {"Android":[{"_id":"586ddc96421aa9316407fb5e","createdAt":"2017-01-05T13:41:42.513Z","desc":"贝塞尔Loading\u2014\u2014化学风暴","publishedAt":"2017-01-06T13:20:19.591Z","source":"web","type":"Android","url":"http://mp.weixin.qq.com/s?__biz=MzAxNzMxNzk5OQ==&mid=2649485066&idx=1&sn=6f9e3b2fc27835aa3cdf8d88103383d9&chksm=83f8260ab48faf1cbf90aa0e174ed7c0522b887fc9c0f1becb221b701d7e317dca572069ecbb#rd","used":true,"who":"xuyisheng"},{"_id":"586e2f4c421aa93161103da7","createdAt":"2017-01-05T19:34:36.54Z","desc":"仿小红书图片标签","images":["http://img.gank.io/e353b213-cfb8-4dd1-9f02-4cb757f0c449"],"publishedAt":"2017-01-06T13:20:19.591Z","source":"web","type":"Android","url":"https://github.com/shellljx/TagViewGroup","used":true,"who":"li jinxiang"},{"_id":"586f0566421aa9315bfbe827","createdAt":"2017-01-06T10:48:06.166Z","desc":"一键接入Tinker","publishedAt":"2017-01-06T13:20:19.591Z","source":"web","type":"Android","url":"http://w4lle.github.io/2017/01/05/one-key-for-tinker/","used":true,"who":"王令龙"},{"_id":"586f1d0c421aa9316407fb6a","createdAt":"2017-01-06T12:29:00.43Z","desc":"通过贝塞尔曲线实现的药瓶和液体效果","images":["http://img.gank.io/77339fbf-d557-457e-a17e-aa17993d6790"],"publishedAt":"2017-01-06T13:20:19.591Z","source":"chrome","type":"Android","url":"https://github.com/Ajian-studio/GABottleLoading","used":true,"who":"代码家"},{"_id":"586f26b3421aa9315ea7990d","createdAt":"2017-01-06T13:10:11.354Z","desc":"Aircrack-ng Android GUI程序，用于攻击无线网络。","publishedAt":"2017-01-06T13:20:19.591Z","source":"chrome","type":"Android","url":"https://github.com/chrisk44/Hijacker","used":true,"who":"代码家"},{"_id":"586f2708421aa93161103db3","createdAt":"2017-01-06T13:11:36.315Z","desc":"Android 动态 Menu 菜单 Demo，做的很棒。","images":["http://img.gank.io/17fa781a-92f9-46a3-b9a9-1848ce643ad2"],"publishedAt":"2017-01-06T13:20:19.591Z","source":"chrome","type":"Android","url":"https://github.com/adonixis/android-animated-menu-items","used":true,"who":"代码家"}],"iOS":[{"_id":"58632da3421aa94db821c254","createdAt":"2016-12-28T11:12:35.806Z","desc":"iOS Runtime之五：方法与消息","images":["http://img.gank.io/0d3249e5-512f-4171-89e9-f17465edff14"],"publishedAt":"2017-01-06T13:20:19.591Z","source":"chrome","type":"iOS","url":"http://www.imlifengfeng.com/blog/?p=398&come=gank","used":true,"who":"feng"},{"_id":"58632dbb421aa94dbe2ccd9c","createdAt":"2016-12-28T11:12:59.602Z","desc":"iOS Runtime之六：Method Swizzling","publishedAt":"2017-01-06T13:20:19.591Z","source":"chrome","type":"iOS","url":"http://www.imlifengfeng.com/blog/?p=400","used":true,"who":"feng"}],"休息视频":[{"_id":"586ef725421aa9315ea79907","createdAt":"2017-01-06T09:47:17.539Z","desc":"首富马云小品首秀，搭档宋小宝却当面把首富们都损了一遍","publishedAt":"2017-01-06T13:20:19.591Z","source":"chrome","type":"休息视频","url":"http://www.toutiao.com/i6372124630777332226/?tt_from=weixin&utm_campaign=client_share&app=news_article&utm_source=weixin&iid=7132594338&utm_medium=toutiao_android&wxshare_count=1","used":true,"who":"daimajia"}],"前端":[{"_id":"586e6400421aa9316407fb64","createdAt":"2017-01-05T23:19:28.548Z","desc":"vue插件-简洁好用的markdown编辑器","publishedAt":"2017-01-06T13:20:19.591Z","source":"web","type":"前端","url":"https://github.com/F-loat/vue-simplemde","used":true,"who":"柴茂源"}],"拓展资源":[{"_id":"586dd4ed421aa9316407fb5c","createdAt":"2017-01-05T13:09:01.289Z","desc":"ITCoder WeeklyBlog 第八期","publishedAt":"2017-01-06T13:20:19.591Z","source":"web","type":"拓展资源","url":"http://itscoder.com/weeklyblog-phase-8/","used":true,"who":null}],"瞎推荐":[{"_id":"586e5e31421aa9316407fb62","createdAt":"2017-01-05T22:54:41.373Z","desc":"某熊周刊:一周推荐外文技术资料（1.1）","publishedAt":"2017-01-06T13:20:19.591Z","source":"chrome","type":"瞎推荐","url":"https://zhuanlan.zhihu.com/p/24739573","used":true,"who":"王下邀月熊"}],"福利":[{"_id":"586e1aad421aa9315ea79905","createdAt":"2017-01-05T18:06:37.810Z","desc":"1-5","publishedAt":"2017-01-06T13:20:19.591Z","source":"chrome","type":"福利","url":"http://ww4.sinaimg.cn/large/610dc034gw1fbfwwsjh3zj20u00u00w1.jpg","used":true,"who":"daimajia"}]}
      */
 
     private boolean error;
     private ResultsBean results;
     private List<String> category;
+
+    public DayLife(Parcel in) {
+        error = in.readByte() != 0;
+        results = in.readParcelable(ResultsBean.class.getClassLoader());
+        category = in.createStringArrayList();
+    }
+
+    public static final Creator<DayLife> CREATOR = new Creator<DayLife>() {
+        @Override
+        public DayLife createFromParcel(Parcel in) {
+            return new DayLife(in);
+        }
+
+        @Override
+        public DayLife[] newArray(int size) {
+            return new DayLife[size];
+        }
+    };
 
     public boolean isError() {
         return error;
@@ -42,54 +64,15 @@ public class DayLife {
         this.category = category;
     }
 
-    public static class ResultsBean {
-
-        private List<ResultBean> Android;
-        private List<ResultBean> iOS;
-        private List<ResultBean> Video;
-        private List<ResultBean> TZResouce;
-        private List<ResultBean> Picture;
-
-        public List<ResultBean> getAndroid() {
-            return Android;
-        }
-
-        public void setAndroid(List<ResultBean> android) {
-            Android = android;
-        }
-
-        public List<ResultBean> getiOS() {
-            return iOS;
-        }
-
-        public void setiOS(List<ResultBean> iOS) {
-            this.iOS = iOS;
-        }
-
-        public List<ResultBean> getVideo() {
-            return Video;
-        }
-
-        public void setVideo(List<ResultBean> video) {
-            Video = video;
-        }
-
-        public List<ResultBean> getTZResouce() {
-            return TZResouce;
-        }
-
-        public void setTZResouce(List<ResultBean> TZResouce) {
-            this.TZResouce = TZResouce;
-        }
-
-        public List<ResultBean> getPicture() {
-            return Picture;
-        }
-
-        public void setPicture(List<ResultBean> picture) {
-            Picture = picture;
-        }
-
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeByte((byte) (error ? 1 : 0));
+        parcel.writeParcelable(results, i);
+        parcel.writeStringList(category);
+    }
 }
