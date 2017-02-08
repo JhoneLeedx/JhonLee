@@ -48,7 +48,7 @@ public class AndroidFragment extends Fragment implements Contract.View,ResultLis
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_index,container,false);
+        View view = inflater.inflate(R.layout.fragment_android,container,false);
         ButterKnife.bind(this,view);
         presenter = new PresenterImpl(this);
         presenter.showPicture("Android",30);
